@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import PropertyPost from './index.js'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -15,19 +16,45 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+      <ul className="navbar-nav">
+      <li>
+        <NavLink to="/login">
+        <button type="button">
+          Login
+        </button>
+        </NavLink>
+
+        <NavLink to="/signup">
+        <button type="button">
+          SignUp
+        </button>
+        </NavLink>
+        <NavLink to="/propertypost">
+        <button type="button">
+          Post a Property
+        </button>
+        </NavLink>
+
+        </li>
+      </ul>
       </>
     );
   }
 
   return (
+    <div className="header">
+      <div className="header__left"></div>
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/">
+        <button type="button">
+          Home
+        </button>
+        </NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
+    </div>
   );
 }
 
