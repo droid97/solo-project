@@ -1,20 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-  }
 
-  html {
-    background: #b5c0ad;
-    min-height: 720px;
-    min-width: 320px;
-  }
 
-  html,
-  body {
-    height: 90%;
-  }
 
   #root {
     align-items: center;

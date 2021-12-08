@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
+import { NavLink, NavMenu } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import PropertyPost from './index.js'
@@ -17,20 +18,28 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-
+   <li>
         <NavLink to="/login">
         <button type="button">
           Login
         </button>
         </NavLink>
+        </li>
 
+        <li>
         <DemoLogin/>
 
+        </li>
+
+        <li>
         <NavLink to="/signup">
         <button type="button">
           SignUp
         </button>
         </NavLink>
+         </li>
+
+
         <NavLink to="/propertypost">
         <button type="button">
           Post a Property
@@ -43,7 +52,7 @@ function Navigation({ isLoaded }){
   }
 
   return (
-
+    <div className="header">
     <ul>
       <li>
         <NavLink exact to="/">
@@ -55,6 +64,7 @@ function Navigation({ isLoaded }){
       </li>
     </ul>
 
+</div>
   );
 }
 

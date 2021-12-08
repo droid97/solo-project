@@ -1,0 +1,19 @@
+p {
+    font-family: "Lato", sans-serif;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    border-top: 1px solid lightgray;
+    padding: 20px;
+    background-color: white;
+    text-align: center;
+  }
+
+  .footer > p {
+    padding: 2px;
+    font-size: 14px;
+  }

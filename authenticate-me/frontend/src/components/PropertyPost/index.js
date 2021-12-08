@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { createProperty } from "../../store/propertyReducer";
 import "./PropertyPost.css"
 import logo from './logo.png'
 
@@ -17,14 +18,14 @@ function PropertyPost() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
-    const [errors, setErrors] = useState([]);
+    const [errors, setValidationErrors] = useState([]);
 
     const sessionUser = useSelector((state) => state.session.user);
 
     const userId = sessionUser?.id;
 
-    const validator = () => {
-        errors = [];
+    const validate = () => {
+       const errors = [];
 
         if(!price) {
             errors.push("Price is requiered")
@@ -45,21 +46,21 @@ function PropertyPost() {
         if(!description) errors.push('Please provide a description');
         if(!title) errors.push('Please provide a title');
 
-        setErrors(validator);
 
 
-        return errors.length;
+
+        return errors
 
     }
-     const handleSubmit = async (event) => {
-         event.preventDefault();
-
+     const onSubmit = async (e) => {
+         e.preventDefault();
+         const errors = validate();
         //onClose();
 
-         if (validator() > 0) return;
+        if (errors.length > 0) return setValidationErrors(errors);
 
          const data = {
-        //   userId,
+           userId,
            name,
           address,
            city,
@@ -71,10 +72,10 @@ function PropertyPost() {
            imageUrl,
          };
 
-         let newHome = await dispatch(PropertyPost(data));
+         let newProperty = await dispatch(createProperty(data));
 
-         if (newHome) {
-           history.push("/listings");
+         if (newProperty) {
+           history.push("/properties");
      }
          }
 
@@ -82,9 +83,18 @@ function PropertyPost() {
  return (
     <div className="Post">
         <img src={logo} className="logo"/>
-    <form onSubmit={handleSubmit}>
+        {errors.length > 0 && (
+              <div>
+                  The following errors were found:
+                  <ul>
+                    {errors.map(error => <li key={error}>{error}</li>)}
+              </ul>
+           </div>
+          )}
+
+    <form onSubmit={onSubmit}>
       <h1>Property Post</h1>
-      <div class="input-group">
+      <div className="input-group">
           <label>Name:</label>
           <input
             name="name"
@@ -93,7 +103,7 @@ function PropertyPost() {
             required
           />
      </div>
-     <div class="input-group">
+     <div className="input-group">
          <label>Address:</label>
          <input
          name="address"
@@ -104,7 +114,7 @@ function PropertyPost() {
 
      </div>
 
-     <div class="input-group">
+     <div className="input-group">
          <label>City:</label>
          <input
          name="city"
@@ -115,7 +125,7 @@ function PropertyPost() {
 
      </div>
 
-     <div class="input-group">
+     <div className="input-group">
          <label>State:</label>
          <input
          name="state"
@@ -126,7 +136,7 @@ function PropertyPost() {
 
      </div>
 
-     <div class="input-group">
+     <div className="input-group">
          <label>Country:</label>
          <input
          name="country"
@@ -137,7 +147,7 @@ function PropertyPost() {
 
      </div>
 
-     <div class="input-group">
+     <div className="input-group">
          <label>Price:</label>
          <input
          name="price"
@@ -147,7 +157,7 @@ function PropertyPost() {
        />
 
      </div>
-     <div class="input-group">
+     <div className="input-group">
          <label>Title:</label>
          <input
          name="description"
@@ -158,7 +168,7 @@ function PropertyPost() {
 
      </div>
 
-     <div class="input-group">
+     <div className="input-group">
          <label>Description:</label>
          <input
          name="description"
@@ -170,7 +180,7 @@ function PropertyPost() {
      </div>
 
 
-     <div class="input-group">
+     <div className="input-group">
          <label>Image URL:</label>
          <input
          name="description"
@@ -180,16 +190,8 @@ function PropertyPost() {
        />
 
      </div>
-     <ul className="error-list">
-          {errors.map((error) => (
-            <li className="errors" key={error}>
-              {error}
-            </li>
-          ))}
-        </ul>
-     <div class="single-button">
+
      <button className="primary">Submit</button>
-        </div>
     </form>
 
 

@@ -7,6 +7,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -16,8 +19,12 @@ function App() {
   }, [dispatch]);
 
   return (
+
     <>
-      <Navigation isLoaded={isLoaded} />
+
+
+
+        <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route path="/login">
@@ -31,11 +38,9 @@ function App() {
           <Route path="/propertypost">
             <PropertyPost />
           </Route>
-
-
-
         </Switch>
       )}
+      <Footer/>
     </>
   );
 }
