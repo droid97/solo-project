@@ -4,7 +4,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const propertyRouter = require("./property");
 const imagesRouter = require("./image");
-
+//
 
 router.use('/session', sessionRouter);
 
