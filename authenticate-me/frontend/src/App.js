@@ -6,6 +6,7 @@ import PropertyPost from "./components/PropertyPost";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Home from "./components/Home";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,8 @@ function App() {
           <Route path="/propertypost">
             <PropertyPost />
           </Route>
+
+
 
         </Switch>
       )}

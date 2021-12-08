@@ -25,6 +25,8 @@ function LoginFormPage() {
     );
   };
 
+
+
   return (
     <div className="Post">
       <img src={logo} className="logo"/>
@@ -59,7 +61,7 @@ function LoginFormPage() {
       </div>
       <button className="primary">Log In</button>
     </form>
-    <button className="secondary">Demo Login
+    <button className="secondary" onClick={handleSubmit}>Demo Login
         </button>
           </div>
   );
