@@ -1,10 +1,9 @@
  import { useEffect } from 'react';
  import { useSelector, useDispatch } from "react-redux"
- import { useParams, useHistory, NavLink } from 'react-router-dom';
+ import { useHistory, NavLink } from 'react-router-dom';
  import { getProperties } from "../../store/propertyReducer"
 
- import PropertyPost from "../PropertyPost";
- import propertyReducer from '../../store/propertyReducer';
+
 
  function PropertyListings() {
   const history = useHistory();
@@ -29,8 +28,9 @@
         {properties.map(property => (
           <NavLink to={`propertylistings/${property?.id}`} key={property?.id}>
             <div className='imgContainer'>
-              <img className='img' key={property?.id} src={property?.imageUrl} alt={""} />
-              <p className='imgTitle'>{property?.imageTitle}</p>
+              <img className='img' key={property?.id} src={property?.imageUrl} alt={property?.name} />
+              <p className='imgTitle'>{property?.name}</p>
+
             </div>
           </NavLink>
         ))}

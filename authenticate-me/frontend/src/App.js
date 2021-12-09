@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import ListingsPage from "./components/PropertyListings";
 import EditPropertyPost from "./components/EditPropertyPost";
 import PropertyListings from "./components/PropertyListings";
+import PropertyPostPage from "./components/PropertyPostPage";
 
 
 
@@ -38,8 +39,12 @@ function App() {
             <SignupFormPage />
           </Route>
 
-          <Route path="/propertylistings">
+          <Route exact path="/propertylistings">
             <PropertyListings />
+          </Route>
+
+          <Route exact path="/propertylistings/:id">
+            <PropertyPostPage />
           </Route>
 
           <Route path="/propertypost">
