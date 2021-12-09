@@ -34,7 +34,20 @@ module.exports = {
         type: Sequelize.STRING
       },
       price: {
+        allowNull:false,
         type: Sequelize.DECIMAL
+      },
+      title: {
+        allowNull:false,
+        type: Sequelize.STRING
+      },
+      description: {
+        allowNull:false,
+        type: Sequelize.STRING
+      },
+      imageUrl: {
+        allowNull:false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

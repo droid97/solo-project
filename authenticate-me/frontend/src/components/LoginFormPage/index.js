@@ -29,7 +29,7 @@ function LoginFormPage() {
 
   return (
     <div className="Post">
-      <img src={logo} className="logo"/>
+      <img src={logo} className="logo" alt=""/>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (

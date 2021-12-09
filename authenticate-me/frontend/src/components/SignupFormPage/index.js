@@ -31,7 +31,7 @@ function SignupFormPage() {
 
   return (
     <div className="Signup">
-      <img src={logo} className="logo"/>
+      <img src={logo} className="logo" alt=""/>
     <form onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}

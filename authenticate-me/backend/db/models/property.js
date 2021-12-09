@@ -29,11 +29,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.DECIMAL,
     },
-    description: {
+    title: {
       allowNull: false,
       type: DataTypes.STRING,
     },
-    title: {
+    description: {
       allowNull: false,
       type: DataTypes.STRING,
     },
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING,
     },
-  
+
 
   }, {});
   Property.associate = function(models) {

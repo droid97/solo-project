@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_PROPERTIES = "home/LOADPROPERTIES";
 const CREATE_PROPERTY = "property/CREATEPROPERTY"
+const EDIT_PROPERTY = " property/EDITPROPERTY"
 
 
 export const loadProperties = (properties) => {
@@ -13,6 +14,12 @@ export const loadProperties = (properties) => {
      return { type: CREATE_PROPERTY, property }
 
  }
+
+ export const editProperty = (property) => {
+    return { type:  EDIT_PROPERTY, property }
+
+}
+
 
 export const getProperties = () => async (dispatch) => {
     const response = await fetch("/api/properties", {
@@ -27,17 +34,28 @@ export const getProperties = () => async (dispatch) => {
 
 
  export const createPropertyListing = (data) => async (dispatch) => {
+     console.log("create pro dataaaaaaaaaaa", data)
      const response = await csrfFetch("/api/properties", {
          method: "POST",
          body: JSON.stringify(data)
      });
-     const property = await response.json();
-     dispatch(createProperty(property));
+    //  const property = await response.json();
+    //  dispatch(createProperty(property));
 
-     return property;
+    //  return property;
  }
 
+ export const editPropertyListing = (data, listingId) => async (dispatch) => {
+    console.log("create pro dataaaaaaaaaaa", data)
+    const response = await csrfFetch(`/api/properties/${listingId}`, {
+        method: "PUT",
+        body: JSON.stringify(data)
+    });
+   //  const updatedProperty = await response.json();
+   //  dispatch(createProperty(property));
 
+   //  return updatedProperty;
+}
 
 const initialState = {};
 
@@ -62,8 +80,17 @@ const propertyReducer = (state={initialState}, action ) => {
              newState[action.property.id] = action.property;
              return newState;
 
-             default:
-                return state;
+
+
+             case EDIT_PROPERTY:
+                newState = { ...state };
+
+                newState[action.property.id] = action.property;
+                return newState;
+
+                default:
+                    return state;
+
     }
 };
 

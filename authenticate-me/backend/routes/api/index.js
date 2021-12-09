@@ -14,6 +14,7 @@ router.use('/properties', propertyRouter);
 
 router.use('/images', imagesRouter);
 
+
 // router.post('/test', function(req, res) {
 //     res.json({ requestBody: req.body });
 //   });

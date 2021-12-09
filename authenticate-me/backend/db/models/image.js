@@ -1,7 +1,5 @@
 'use strict';
 
-const { BelongsTo } = require("sequelize/types");
-
 module.exports = (sequelize, DataTypes) => {
   const Image = sequelize.define('Image',
   {
