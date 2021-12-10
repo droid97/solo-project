@@ -51,7 +51,7 @@ export const getProperties = () => async (dispatch) => {
  }
 
  export const editPropertyListing = (data, propertyListingId) => async (dispatch) => {
-    console.log("create pro dataaaaaaaaaaa", data)
+
     const res = await csrfFetch(`/api/properties/${propertyListingId}`, {
         method: "PUT",
         body: JSON.stringify(data)
@@ -63,7 +63,7 @@ export const getProperties = () => async (dispatch) => {
 }
 
 export const deletePropertyListing = (propertyListingId) => async (dispatch) => {
-const res = await csrfFetch(`/api/homes/${propertyListingId}`, {
+const res = await csrfFetch(`/api/properties/${propertyListingId}`, {
     method: "DELETE",
   });
   if (res.ok) {

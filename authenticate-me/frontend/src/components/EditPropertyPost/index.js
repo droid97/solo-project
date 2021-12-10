@@ -10,7 +10,7 @@ function EditPropertyPost() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { propertyListingId } = useParams();
+  const { id } = useParams();
   const homeObj = useSelector((state) => state.home);
 
 
@@ -24,7 +24,9 @@ function EditPropertyPost() {
   const [title, setTitle] = useState();
   const [imageUrl, setImageUrl] = useState();
   const sessionUser = useSelector((state) => state.session.user);
-  const { id } = useParams();
+
+
+
 
   const propertiesObj = useSelector(state => state.property)
 
@@ -33,13 +35,27 @@ function EditPropertyPost() {
 
   const propertyById = properties.find(property => +property.id === +id);
 
-    console.log(propertyById, "aqui toyyyyyyyyyyyy")
+    console.log("aqui toyyyyyyyyyyyy", propertyById )
 
+//const { id, userId, name, address, city, state, country, price, description, title, imageUrl } = propertyById;
+
+// function inputDefault( name, address, city, state, country, price, description, title, imageUrl) {
+// setName(name);
+// setAddress(address);
+// setCity(city);
+// setState(state);
+// setCountry(country);
+// setPrice(price);
+// setDescription(description);
+// setTitle(title);
+// setImageUrl(imageUrl);
+// }
 
 
   useEffect(() => {
     dispatch(getProperties());
-  }, [dispatch])
+    //inputDefault( name, address, city, state, country, price, description, title, imageUrl);
+ }, [dispatch])
 
   const userId = sessionUser?.id;
 
@@ -61,11 +77,11 @@ function EditPropertyPost() {
       imageUrl,
     };
 
+    console.log("amonooooooooos", data)
+    console.log("mamaaaa", id)
+    dispatch(editPropertyListing(data, id))
 
-    dispatch(editPropertyListing(data, propertyListingId))
-
-    history.push(`/propertylistings/${propertyListingId}`)
-    console.log(data, "amonooooooooos")
+    history.push(`/propertylistings/${id}`)
 
   };
 
