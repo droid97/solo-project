@@ -51,7 +51,7 @@ function App() {
             <PropertyPost />
           </Route>
 
-          <Route path="/editpropertypost">
+          <Route path="/propertylistings/:id/edit">
             <EditPropertyPost />
           </Route>
 

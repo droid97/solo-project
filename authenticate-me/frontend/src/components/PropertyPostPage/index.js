@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { useParams, useHistory, NavLink } from 'react-router-dom';
-import { getProperties } from "../../store/propertyReducer"
+import { getProperties, deletePropertyListing } from "../../store/propertyReducer"
 
 
 
 const PropertyPostPage = () => {
     const params = useParams();
     const { id } = params;
-
+console.log(id, "sabrosooooooooo")
 
     const history = useHistory();
   const dispatch = useDispatch();
@@ -27,7 +27,11 @@ useEffect(() => {
 
   }, [dispatch])
 
+const handleDelete = (id) => {
+dispatch(deletePropertyListing(id))
+.then(() => { history.push('/propertylistings')})
 
+}
 
 
 return (
@@ -48,10 +52,10 @@ return (
           <p className='description'>{propertyById?.title}</p>
           <p className='description'>{propertyById?.description}</p>
         </div>
-      <button >
-        Comment
-      </button>
-        <button >
+        <NavLink to={`/propertylistings/${id}/edit`}>
+        <p>Edit</p>
+      </NavLink>
+        <button onClick={() => handleDelete(id)}>
         Delete
       </button>
       </div>

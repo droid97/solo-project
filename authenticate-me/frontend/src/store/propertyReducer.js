@@ -2,8 +2,8 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_PROPERTIES = "home/LOADPROPERTIES";
 const CREATE_PROPERTY = "property/CREATEPROPERTY"
-const EDIT_PROPERTY = " property/EDITPROPERTY"
-
+const EDIT_PROPERTY = "property/EDITPROPERTY"
+const DELETE_PROPERTY = "property/DELETEPROPERTY"
 
 export const loadProperties = (properties) => {
     return { type: LOAD_PROPERTIES, properties }
@@ -17,6 +17,11 @@ export const loadProperties = (properties) => {
 
  export const editProperty = (property) => {
     return { type:  EDIT_PROPERTY, property }
+
+}
+
+export const deleteProperty = (property) => {
+    return { type: DELETE_PROPERTY, property}
 
 }
 
@@ -45,16 +50,25 @@ export const getProperties = () => async (dispatch) => {
     //  return property;
  }
 
- export const editPropertyListing = (data, listingId) => async (dispatch) => {
+ export const editPropertyListing = (data, propertyListingId) => async (dispatch) => {
     console.log("create pro dataaaaaaaaaaa", data)
-    const response = await csrfFetch(`/api/properties/${listingId}`, {
+    const res = await csrfFetch(`/api/properties/${propertyListingId}`, {
         method: "PUT",
         body: JSON.stringify(data)
     });
-   //  const updatedProperty = await response.json();
-   //  dispatch(createProperty(property));
+     const updatedProperty = await res.json();
+     dispatch(createProperty(updatedProperty));
 
-   //  return updatedProperty;
+     return updatedProperty;
+}
+
+export const deletePropertyListing = (propertyListingId) => async (dispatch) => {
+const res = await csrfFetch(`/api/homes/${propertyListingId}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(deleteProperty(propertyListingId));
+  }
 }
 
 const initialState = {};

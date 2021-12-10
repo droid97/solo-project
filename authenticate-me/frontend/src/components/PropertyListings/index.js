@@ -11,6 +11,8 @@
 
   const sessionUser = useSelector((state) => state.session.user);
   const propertiesObj = useSelector((state) => state.property);
+
+  console.log(propertiesObj, "aquiiiiiiiiiiiiii")
   const properties = Object.values(propertiesObj);
 
  useEffect(() => {
