@@ -30,12 +30,12 @@ function EditPropertyPost() {
 
   const propertiesObj = useSelector(state => state.property)
 
-  console.log(propertiesObj, ("acaaaaaaaaaaaaaa"))
+
   const properties = Object.values(propertiesObj);
 
   const propertyById = properties.find(property => +property.id === +id);
 
-    console.log("aqui toyyyyyyyyyyyy", propertyById )
+
 
 //const { id, userId, name, address, city, state, country, price, description, title, imageUrl } = propertyById;
 
@@ -77,8 +77,7 @@ function EditPropertyPost() {
       imageUrl,
     };
 
-    console.log("amonooooooooos", data)
-    console.log("mamaaaa", id)
+
     dispatch(editPropertyListing(data, id))
 
     history.push(`/propertylistings/${id}`)

@@ -8,20 +8,15 @@ import { getProperties, deletePropertyListing } from "../../store/propertyReduce
 const PropertyPostPage = () => {
     const params = useParams();
     const { id } = params;
-console.log(id, "sabrosooooooooo")
 
     const history = useHistory();
   const dispatch = useDispatch();
-console.log("hola")
 const propertiesObj = useSelector(state => state.property);
 
-//console.log(propertiesObj, "holaaaaaaaaaaaa")
 const properties = Object.values(propertiesObj);
-//console.log(properties[0]?.id, "ahora esteeeeeeeeee")
 const propertyById = properties.find(property => +property.id === +id)
 
 
-//console.log(propertyById, "esteeeeeeeeeeee")
 useEffect(() => {
     dispatch(getProperties());
 
@@ -53,7 +48,9 @@ return (
           <p className='description'>{propertyById?.description}</p>
         </div>
         <NavLink to={`/propertylistings/${id}/edit`}>
-        <p>Edit</p>
+        <button>
+          Edit
+        </button>
       </NavLink>
         <button onClick={() => handleDelete(id)}>
         Delete

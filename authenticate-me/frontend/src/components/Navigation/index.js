@@ -53,9 +53,20 @@ function Navigation({ isLoaded }){
         </button>
         </NavLink>
 
+        <NavLink exact to="/propertylistings">
+        <button type="button">
+          Property Listings
+        </button>
+        </NavLink>
+
+        <NavLink exact to="/propertypost">
+        <button type="button">
+          Create Property
+        </button>
+        </NavLink>
 
         {isLoaded && sessionLinks}
- 
+
 
 </div>
   );

@@ -12,7 +12,6 @@
   const sessionUser = useSelector((state) => state.session.user);
   const propertiesObj = useSelector((state) => state.property);
 
-  console.log(propertiesObj, "aquiiiiiiiiiiiiii")
   const properties = Object.values(propertiesObj);
 
  useEffect(() => {
@@ -24,7 +23,7 @@
     <div>
       <h1>All Properties</h1>
       { sessionUser &&
-        <NavLink exact to="/propertylistings/add" className="">Add a Property</NavLink>
+        <NavLink exact to="/propertylistings/add" className="">""</NavLink>
       }
       <div className='imgsContainer'>
         {properties.map(property => (
