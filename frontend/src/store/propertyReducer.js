@@ -44,10 +44,10 @@ export const getProperties = () => async (dispatch) => {
          method: "POST",
          body: JSON.stringify(data)
      });
-    //  const property = await response.json();
-    //  dispatch(createProperty(property));
+      const property = await response.json();
+      dispatch(createProperty(property));
 
-    //  return property;
+      return property;
  }
 
  export const editPropertyListing = (data, propertyListingId) => async (dispatch) => {
@@ -101,6 +101,10 @@ const propertyReducer = (state={initialState}, action ) => {
 
                 newState[action.property.id] = action.property;
                 return newState;
+
+             case DELETE_PROPERTY:
+                 delete state[action.property]
+                 return { ...state };
 
                 default:
                     return state;

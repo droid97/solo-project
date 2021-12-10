@@ -24,6 +24,7 @@ function PropertyPost() {
 
   const sessionUser = useSelector((state) => state.session.user);
   const userId = sessionUser?.id;
+  console.log(userId, "herrrrrrrrrrrrrrrr")
 
   const validate = () => {
     const errors = [];
@@ -70,11 +71,12 @@ function PropertyPost() {
       title,
       imageUrl,
     };
+    console.log(data, "aquiiiiiiiiiii")
 
-      history.push("/propertylistings");
 
-    return dispatch(createPropertyListing(data));
+    await dispatch(createPropertyListing(data));
 
+    history.push("/propertylistings");
   }
 
 
