@@ -11,6 +11,7 @@ import ListingsPage from "./components/PropertyListings";
 import EditPropertyPost from "./components/EditPropertyPost";
 import PropertyListings from "./components/PropertyListings";
 import PropertyPostPage from "./components/PropertyPostPage";
+import Header from "./components/Header";
 
 
 

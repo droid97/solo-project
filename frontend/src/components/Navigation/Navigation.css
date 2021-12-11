@@ -1,3 +1,29 @@
+.navigation-li {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 50;
+    background-color: #F5A623;
+    height: 100px;
+    position: relative;
+}
+
+
+
+
+
+
+.logout-button {
+    width: 170px;
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 100px;
+}
 
 
 
@@ -7,8 +33,42 @@
 
 
 
+.login-tab {
+display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 12px 24px;
+    border: 0;
+    color: #fff;
+    background: #ea6c0b;
+    line-height: 1.15;
+    font-size: 16px;
+    :hover {
+        transition: all .1s ease;
+        box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+    }
+
+ 
 
 
 
 
 
+
+}
+
+.close-menu {
+    color: #1db7e2;
+}
+
+.create-button {
+    position: absolute;
+    top: 200px;
+}
+
+.profile-button {
+    position: absolute;
+    top: 300px;
+}

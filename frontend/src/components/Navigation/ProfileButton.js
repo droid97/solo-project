@@ -31,11 +31,12 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button onClick={openMenu} style={{ color: "white", background: "#ea6c0b",   width: "100px",
+  height: "40px" }}>Demo
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
-        <ul className="profile-dropdown">
+        <ul className="login-tab">
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
