@@ -18,8 +18,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Properties" },
       },
-      review: {
-        allowNull: false,
+      commentHeader: {
+        type: Sequelize.STRING(300)
+      },
+      commentBody: {
         type: Sequelize.TEXT
       },
       createdAt: {

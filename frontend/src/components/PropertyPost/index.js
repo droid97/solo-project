@@ -24,7 +24,7 @@ function PropertyPost() {
 
   const sessionUser = useSelector((state) => state.session.user);
   const userId = sessionUser?.id;
-  console.log(userId, "herrrrrrrrrrrrrrrr")
+
 
   const validate = () => {
     const errors = [];

@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
   Property.associate = function(models) {
     // associations can be defined here
  Property.belongsTo(models.User, { foreignKey: "userId" });
+ Property.hasMany(models.Review, { foreignKey: "propertyId", onDelete: 'CASCADE', hooks: true})
   };
   return Property;
 };
