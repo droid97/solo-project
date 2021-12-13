@@ -23,7 +23,7 @@
     <div>
       <h1>All Properties</h1>
       { sessionUser &&
-        <NavLink exact to="/propertylistings/add" className="">""</NavLink>
+        <NavLink exact to="/propertylistings/add" className=""></NavLink>
       }
       <div className='imgsContainer'>
         {properties.map(property => (

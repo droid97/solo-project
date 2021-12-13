@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import PropertyPost from "./components/PropertyPost";
 import SignupFormPage from "./components/SignupFormPage";
@@ -11,7 +11,6 @@ import Favicon from 'react-favicon'
 import EditPropertyPost from "./components/EditPropertyPost";
 import PropertyListings from "./components/PropertyListings";
 import PropertyPostPage from "./components/PropertyPostPage";
-
 
 
 
@@ -35,8 +34,11 @@ function App() {
 
   return (
     <>
-    <Favicon url={'img/favicon-16x16.png'} />
+
+    <Favicon url={'img/favicon-16x16.png'} href="/" />
+
       <Navigation isLoaded={isLoaded} />
+
       {isLoaded && (
         <Switch>
          <Route exact path='/'>

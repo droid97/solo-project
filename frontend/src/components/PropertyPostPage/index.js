@@ -4,6 +4,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getProperties, deletePropertyListing } from "../../store/propertyReducer"
 import { getReviews } from '../../store/reviewsReducer';
 import { addtheReview, removetheReview } from '../../store/reviewsReducer';
+import './PropertyPostPage.css'
 
 
 
@@ -89,19 +90,25 @@ const handleReviewDelete = (id) => {
 return (
     <div>
 
-        <NavLink to='/propertylistings'>
-        <p>Back</p>
-      </NavLink>
+
       {sessionUser && sessionUser.id === propertyById?.userId &&
           <NavLink to={`/properties/${id}/edit`}>
-            <p>Edit</p>
+            <p></p>
           </NavLink>
         }
         {sessionUser && sessionUser.id === propertyById?.userId &&
-          <button onClick={() => handleDelete(id)}>
-            DELETE
+          <button onClick={() => handleDelete(id)} className="login-tab">
+            DELETE POST
           </button>
         }
+
+
+
+        <button className="">
+        <NavLink to={`/propertylistings/${id}/edit`}>
+          EDIT POST
+        </NavLink>
+        </button>
 
       <div className='propertySingleDiv'>
         <img className='propertySingle' key={propertyById?.id} src={propertyById?.imageUrl} alt={propertyById?.city} />
@@ -122,11 +129,12 @@ return (
                 <div className='' key={review?.id}>
                   <div id=''>
                     <p className=''>{review?.User?.username}:</p>
-                    <p className='' id=''>{review?.commentHeader}</p>
+                    <textarea className='' id=''>{review?.commentHeader}</textarea>
                   </div>
                   <p className='' id=''>{review?.commentBody}</p>
                   {sessionUser && sessionUser.id === review?.userId &&
-                    <button className='' onClick={() => handleReviewDelete(review?.id)}>
+
+                    <button onClick={() => handleReviewDelete(review?.id)} class="className='login-tab">
 
                      Delete
                     </button>
@@ -161,20 +169,20 @@ return (
                       id='textComment'
                       onChange={(e) => setReviewHeader(e.target.value)}
                       value={reviewHeader}
-                      placeholder='Comment title here...'
+                      placeholder='Title'
                     />
                   </div>
                   <div className="input" id='commentsForm'>
                     <textarea
-                      id='textCommentArea'
+                      id='comment'
                       className="input-field"
                       onChange={(e) => setReviewBody(e.target.value)}
                       value={reviewBody}
-                      placeholder='Comment here...'
+                      placeholder='Review me here...'
                     />
                   </div>
                   <div className='commentButtonDiv'>
-                    <button type='submit' className='commentButton'>Submit</button>
+                    <button type='submit' className='login-tab'>Submit Comment</button>
                   </div>
                 </form>
               }
@@ -189,14 +197,7 @@ return (
 
 
 
-        <NavLink to={`/propertylistings/${id}/edit`}>
-        <button>
-          Edit
-        </button>
-      </NavLink>
-        <button onClick={() => handleDelete(id)}>
-        Delete
-      </button>
+
       </div>
     </div>
 

@@ -11,9 +11,8 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import "./Navigation.css"
-
 import DemoLogin from '../Demo/demo';
-import './Navigation.css';
+import android from './android.png'
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -50,7 +49,9 @@ function Navigation({ isLoaded }){
 
 
       <div>
-        <DemoLogin/>
+        <button>
+        <DemoLogin className="login-tab"/>
+        </button>
         </div>
 
 
@@ -69,8 +70,11 @@ function Navigation({ isLoaded }){
   return (
     <div className="container">
 <div className="navigation-li">
+<div class="logo-image">
+  <p text="Lodging"></p>
+<img src={android} class="img-fluid"></img>
 
-
+</div>
 
 
 

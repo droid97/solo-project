@@ -4,12 +4,19 @@
     justify-content: space-around;
     align-items: center;
     z-index: 50;
-    background-color: #F5A623;
+    background-color: white;
     height: 100px;
     position: relative;
 }
 
+.logo-image{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
 
+
+
+}
 
 
 
@@ -50,7 +57,7 @@ display: inline-block;
         box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
     }
 
- 
+
 
 
 

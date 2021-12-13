@@ -1,0 +1,22 @@
+.comment {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    background-color: #d0e2bc;
+  }
+
+  img{
+
+    width:  250px;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+html {
+    height: 100vw;
+}
