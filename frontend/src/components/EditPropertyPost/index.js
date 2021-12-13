@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import { editPropertyListing } from "../../store/propertyReducer";
 import { getProperties } from "../../store/propertyReducer";
+
 import "./EditPropertyPost.css"
 import logo from './logo.png'
 
@@ -85,11 +86,13 @@ function EditPropertyPost() {
   };
 
 
-
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
   return (
     <>
       <div className="Post">
-      <img src={logo} className="logo" alt="" />
+
         <form onSubmit={handleSubmit}>
           <h1>Edit Poperty Listing</h1>
           <div className="input-group">

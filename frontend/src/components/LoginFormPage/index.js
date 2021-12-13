@@ -61,8 +61,7 @@ function LoginFormPage() {
       </div>
       <button className="primary">Log In</button>
     </form>
-    <button className="secondary" onClick={handleSubmit}>Demo Login
-        </button>
+
           </div>
   );
 }

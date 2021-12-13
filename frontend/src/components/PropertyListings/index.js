@@ -2,6 +2,7 @@
  import { useSelector, useDispatch } from "react-redux"
  import { useHistory, NavLink } from 'react-router-dom';
  import { getProperties } from "../../store/propertyReducer"
+ import { Redirect } from "react-router-dom";
 
 
 
@@ -18,10 +19,12 @@
      dispatch(getProperties());
  }, [dispatch])
 
-
+ if (!sessionUser) return (
+  <Redirect to="/" />
+);
    return (
     <div>
-      <h1>All Properties</h1>
+   
       { sessionUser &&
         <NavLink exact to="/propertylistings/add" className=""></NavLink>
       }

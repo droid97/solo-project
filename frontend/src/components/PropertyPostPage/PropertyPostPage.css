@@ -20,3 +20,10 @@
 html {
     height: 100vw;
 }
+
+#errorsComments, .textos, .textDiv2, .textDiv3, #delete2, #commentDeleteButton, .usuarioComments, #userTitle, #editBirdX, #backToBirds {
+  background-color: rgba(238, 238, 238, 0.993);
+}
+.formErrors{
+  text-align: center;
+}

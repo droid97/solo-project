@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPropertyListing } from "../../store/propertyReducer";
 import "./PropertyPost.css"
 import logo from './logo.png'
+import { Redirect } from "react-router-dom";
 
 
 
@@ -57,7 +58,7 @@ function PropertyPost() {
     const errors = validate();
     //onClose();
 
-    //if (errors.length > 0) return setValidationErrors(errors);
+    if (errors.length > 0) return setValidationErrors(errors);
 
     const data = {
       userId,
@@ -71,7 +72,16 @@ function PropertyPost() {
       title,
       imageUrl,
     };
-    console.log(data, "aquiiiiiiiiiii")
+    //console.log(data, "aquiiiiiiiiiii")
+setName('');
+setAddress('')
+setCity('');
+setState('');
+setCountry('');
+setDescription('');
+setTitle('');
+setImageUrl('');
+setPrice('');
 
 
     await dispatch(createPropertyListing(data));
@@ -79,10 +89,13 @@ function PropertyPost() {
     history.push("/propertylistings");
   }
 
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div className="Post">
-      <img src={logo} className="logo" alt="" />
+     
       {errors.length > 0 && (
         <div>
           The following errors were found:

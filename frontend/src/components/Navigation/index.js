@@ -7,7 +7,7 @@ import {
   NavBtn,
   NavBtnLink,
 } from "./NavbarElements";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import "./Navigation.css"
@@ -48,11 +48,11 @@ function Navigation({ isLoaded }){
 
 
 
-      <div>
-        <button>
+
+
         <DemoLogin className="login-tab"/>
-        </button>
-        </div>
+
+
 
 
 
@@ -72,11 +72,10 @@ function Navigation({ isLoaded }){
 <div className="navigation-li">
 <div class="logo-image">
   <p text="Lodging"></p>
-<img src={android} class="img-fluid"></img>
-
+  <Link to={'/'}>
+<img src={android} class="img-fluid"  path=""></img>
+</Link>
 </div>
-
-
 
 
 

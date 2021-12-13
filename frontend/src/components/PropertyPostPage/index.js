@@ -40,7 +40,7 @@ const propertyById = properties.find(property => +property?.id === +id)
 //  console.log(reviews,"testttttt")
   const reviewsForThisPage = reviews.filter((review) => review.propertyId === +id);
 
- console.log(reviewsForThisPage, "reviewssssss")
+// console.log(reviewsForThisPage, "reviewssssss")
 
 
 
@@ -54,10 +54,10 @@ dispatch(deletePropertyListing(id))
 .then(() => { history.push('/propertylistings')})
 
 }
-// const reset = () => {
-//   setReviewHeader('')
-//   setReviewBody('')
-// }
+ const reset = () => {
+  setReviewHeader('')
+   setReviewBody('')
+ }
 
 const handleReview = async (e) => {
   e.preventDefault();
@@ -70,14 +70,20 @@ const handleReview = async (e) => {
     propertyId: propertyById.id
   };
 
-console.log(id, "propertyID")
+//console.log(id, "propertyID")
  await dispatch(addtheReview(newReview, id))
  .then(res => {
+  if (res.ok) {
   dispatch(getReviews());
   setErrors([])
+  reset()
+}
+})
+.catch(async res => {
+  const info = await res.json();
+  setErrors(info.errors)
 })
 };
-
 
 const handleReviewDelete = (id) => {
   dispatch(removetheReview(id));
@@ -174,7 +180,7 @@ return (
                   </div>
                   <div className="input" id='commentsForm'>
                     <textarea
-                      id='comment'
+                      id='textCommentArea'
                       className="input-field"
                       onChange={(e) => setReviewBody(e.target.value)}
                       value={reviewBody}
@@ -182,7 +188,7 @@ return (
                     />
                   </div>
                   <div className='commentButtonDiv'>
-                    <button type='submit' className='login-tab'>Submit Comment</button>
+                    <button type='submit' className='login-tab'>Submit Review</button>
                   </div>
                 </form>
               }
