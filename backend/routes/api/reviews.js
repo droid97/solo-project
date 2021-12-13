@@ -4,6 +4,10 @@ const { Review } = require("../../db/models");
 const {  User } = require('../../db/models');
 const router = express.Router();
 
+const { check } = require('express-validator');
+const { requireAuth } = require('../../utils/auth');
+const { handleValidationErrors } = require('../../utils/validation');
+
 router.get('', asyncHandler(async (req, res) => {
   console.log("reviews es de este lugar")
            const reviews = await Review.findAll(({
@@ -40,10 +44,28 @@ router.get('', asyncHandler(async (req, res) => {
 //  return res.json(newReview);
 //      })
   // );
+
+
+  const validateReview = [
+    check('reviewHeader')
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a Review title.')
+      .isLength({ max: 300 })
+      .withMessage('Please provide a Review with max length 300 characters.'),
+    check('reviewBody')
+      .exists({ checkFalsy: true })
+      .withMessage('Please provide a Review body.'),
+    handleValidationErrors
+  ];
+
+
+
+
+
   router.post(
-    "/:id/add",
+    "/:id/add",  validateReview, requireAuth,
     asyncHandler(async (req, res) => {
-       console.log(req.body,"algoooooooooooooooo")
+       //console.log(req.body,"algoooooooooooooooo")
       const { userId, propertyId, reviewHeader, reviewBody } = req.body;
       const newReview = await Review.create({
         userId,
