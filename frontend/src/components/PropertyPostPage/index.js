@@ -72,18 +72,17 @@ const handleReview = async (e) => {
 
 //console.log(id, "propertyID")
  await dispatch(addtheReview(newReview, id))
- .then(res => {
-  if (res.ok) {
+//  .then(res => {
+//   if (res.ok) {
   dispatch(getReviews());
   setErrors([])
   reset()
 }
-})
-.catch(async res => {
-  const info = await res.json();
-  setErrors(info.errors)
-})
-};
+// .catch(async res => {
+//   const info = await res.json();
+//   setErrors(info.errors)
+// })
+// };
 
 const handleReviewDelete = (id) => {
   dispatch(removetheReview(id));

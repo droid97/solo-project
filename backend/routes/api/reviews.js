@@ -46,24 +46,24 @@ router.get('', asyncHandler(async (req, res) => {
   // );
 
 
-  const validateReview = [
-    check('reviewHeader')
-      .exists({ checkFalsy: true })
-      .withMessage('Please provide a Review title.')
-      .isLength({ max: 300 })
-      .withMessage('Please provide a Review with max length 300 characters.'),
-    check('reviewBody')
-      .exists({ checkFalsy: true })
-      .withMessage('Please provide a Review body.'),
-    handleValidationErrors
-  ];
+  // const validateReview = [
+  //   check('reviewHeader')
+  //     .exists({ checkFalsy: true })
+  //     .withMessage('Please provide a Review title.')
+  //     .isLength({ max: 300 })
+  //     .withMessage('Please provide a Review with max length 300 characters.'),
+  //   check('reviewBody')
+  //     .exists({ checkFalsy: true })
+  //     .withMessage('Please provide a Review body.'),
+  //   handleValidationErrors
+  // ];
 
 
 
 
 
   router.post(
-    "/:id/add",  validateReview, requireAuth,
+    "/:id/add",   requireAuth,
     asyncHandler(async (req, res) => {
        //console.log(req.body,"algoooooooooooooooo")
       const { userId, propertyId, reviewHeader, reviewBody } = req.body;
